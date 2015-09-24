@@ -45,4 +45,8 @@ my_df_unique <- my_df[ !duplicated(names(my_df)) ]
 ###select the columns which contain the mean and the std for every subject and activity
 my_df_mean_and_sd <- select(my_df_unique, PersonID, ActivityLabels, contains("mean()"), contains("std"))
 
-my_df_mean_and_sd
+
+####get the means for all columns for the groups PersondID and ActiviryLables
+means_PersonID_Activity<-my_df_mean_and_sd %>%group_by(PersonID, ActivityLabels)%>%summarise_each(funs(mean))
+means_PersonID_Activity
+
