@@ -1,5 +1,4 @@
 
-
 ######Assuming that all the txt files exist in working directory
 ###load the dplyr package
 library(dplyr)
@@ -20,9 +19,15 @@ Y_test<-read.csv("Y_test.txt", sep="", header=FALSE)
 colnames(X_test)<-as.vector(features$V2)
 TestTrain<-rep("Test", length(X_test[,1]))
 colnames(subject_test)<-"PersonID"
-colnames(Y_test)<-"ActivityID"
+
+
+Y_testID<-cbind(Y_test, row.names(Y_test))
+colnames(Y_testID)<-c("ActivityID", "rowid")
+
+
 names(activity_labels)<-c("ActivityID", "ActivityLabels")
-Test_Activities<-merge(Y_test, activity_labels)
+Test_Activities<-merge(Y_testID, activity_labels)
+Test_Activities<-arrange(Test_Activities, as.numeric(as.vector(rowid)))
 Test_df<-cbind(Test_Activities, subject_test, TestTrain, X_test)
 
 
@@ -31,8 +36,13 @@ Test_df<-cbind(Test_Activities, subject_test, TestTrain, X_test)
 colnames(X_train)<-as.vector(features$V2)
 TestTrain<-rep("Train", length(X_train[,1]))
 colnames(subject_train)<-"PersonID"
-colnames(Y_train)<-"ActivityID"
-Train_Activities<-merge(Y_train, activity_labels)
+
+
+
+Y_trainID<-cbind(Y_train, row.names(Y_train))
+colnames(Y_trainID)<-c("ActivityID", "rowid")
+Train_Activities<-merge(Y_trainID, activity_labels)
+Train_Activities<-arrange(Train_Activities, as.numeric(as.vector(rowid)))
 Train_df<-cbind(Train_Activities, subject_train, TestTrain, X_train)
 
 ###create the train and test set
@@ -49,4 +59,5 @@ my_df_mean_and_sd <- select(my_df_unique, PersonID, ActivityLabels, contains("me
 ####get the means for all columns for the groups PersondID and ActiviryLables
 means_PersonID_Activity<-my_df_mean_and_sd %>%group_by(PersonID, ActivityLabels)%>%summarise_each(funs(mean))
 means_PersonID_Activity
+
 
