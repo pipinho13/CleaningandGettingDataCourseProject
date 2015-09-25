@@ -30,11 +30,9 @@ For each record it is provided:
 The dataset includes the following files:
 =========================================
 
-- 'README.txt'
+- 'README.md'
 
-- 'features_info.txt': Shows information about the variables used on the feature vector.
-
-- 'codebook.txt': List of all features.
+- 'codebook.md': Shows information about the variables used on the feature vector
 
 - 'run_analysis.R': An R file which contains the scripts to run the analysis
 
@@ -43,7 +41,14 @@ Notes:
 - Features are normalized and bounded within [-1,1].
 - Each feature vector is a row on the text file.
 
-For more information about this dataset contact: activityrecognition@smartlab.ws
+Description
+====
+-There is one R script called run_analysis.R that does the following. 
+-Merges the training and the test sets to create one data set.
+-Extracts only the measurements on the mean and standard deviation for each measurement. 
+-Uses descriptive activity names to name the activities in the data set
+-Appropriately labels the data set with descriptive variable names. 
+-From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 License:
 ========
