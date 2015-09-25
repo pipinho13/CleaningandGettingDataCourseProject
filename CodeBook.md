@@ -45,7 +45,7 @@ fBodyGyroMag
 fBodyGyroJerkMag
 
 The set of variables that were estimated from these signals are for each PersonID (or Subject) and for each ActivityID the 
-========
+====
 mean(): Mean value
 
 std(): Standard deviation
