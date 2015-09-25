@@ -48,7 +48,7 @@ Description
 - Extracts only the measurements on the mean and standard deviation for each measurement. 
 - Uses descriptive activity names to name the activities in the data set
 - Appropriately labels the data set with descriptive variable names. 
-- From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+- From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject (PersonID). There totally 30 subjects who performed 6 activities. So we get the mean of the varibles of each group. Totally we get 30x6=180 rows.
 
 License:
 ========
